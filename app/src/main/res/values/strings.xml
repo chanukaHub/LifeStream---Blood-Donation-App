@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">LifeStream</string>
+    <string name="app_name1">Life</string>
+    <string name="app_name2">Stream</string>
     <string name="sub_topic">Donate | Save | Community</string>
 </resources>

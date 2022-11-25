@@ -9,13 +9,15 @@ import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     private static  int SPLASH_SCREEN = 2500;
 
     ImageView imageView;
-    TextView textView1, textView2;
+    TextView textView1;
+    LinearLayout linearLayout;
     Animation top, bottom;
 
     @Override
@@ -25,15 +27,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         imageView = findViewById(R.id.imageView);
-        textView1 = findViewById(R.id.app_name);
-        textView2 = findViewById(R.id.sub_topic);
+        linearLayout = findViewById(R.id.app_name);
+        textView1 = findViewById(R.id.sub_topic);
 
 
         top = AnimationUtils.loadAnimation(this, R.anim.top);
         bottom = AnimationUtils.loadAnimation(this, R.anim.bottom);
         imageView.setAnimation(top);
+        linearLayout.setAnimation(bottom);
         textView1.setAnimation(bottom);
-        textView2.setAnimation(bottom);
 
         new Handler().postDelayed(new Runnable() {
             @Override
