@@ -3,4 +3,30 @@
     <string name="app_name1">Life</string>
     <string name="app_name2">Stream</string>
     <string name="sub_topic">Donate | Save | Community</string>
+
+    <string-array name="province_array">
+        <item>--select--</item>
+        <item>Central</item>
+        <item>North Central</item>
+        <item>Northern</item>
+        <item>Eastern</item>
+        <item>North Western</item>
+        <item>Southern</item>
+        <item>Uva</item>
+        <item>Sabaragamuwa</item>
+        <item>Western</item>
+    </string-array>
+
+    <string-array name="blood_array">
+        <item>--select--</item>
+        <item>A+</item>
+        <item>A-</item>
+        <item>B+</item>
+        <item>B-</item>
+        <item>AB+</item>
+        <item>AB-</item>
+        <item>O+</item>
+        <item>O-</item>
+
+    </string-array>
 </resources>

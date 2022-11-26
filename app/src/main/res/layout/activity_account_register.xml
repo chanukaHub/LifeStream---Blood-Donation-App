@@ -1,0 +1,433 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/main_background"
+    tools:context=".AccountRegister">
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="60dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/lifestream_icon"
+        android:layout_centerHorizontal="true"/>
+
+    <ScrollView
+        android:id="@+id/scrollView_form"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView4"
+        android:layout_above="@+id/linerlayout_switch">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:text="Name"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:fontFamily="@font/roboto"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <EditText
+                android:id="@+id/register_firstname"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:background="@drawable/rounded_edittext"
+                android:padding="8dp"
+                android:layout_marginRight="5dp"
+                android:hint="First Name"
+                android:textSize="14sp"
+                android:fontFamily="@font/roboto"
+                android:paddingStart="15sp"/>
+            <EditText
+                android:id="@+id/register_lastname"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:background="@drawable/rounded_edittext"
+                android:padding="8dp"
+                android:layout_marginLeft="5dp"
+                android:hint="Last Name"
+                android:textSize="14sp"
+                android:fontFamily="@font/roboto"
+                android:paddingStart="15sp"/>
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:text="Email"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:fontFamily="@font/roboto"/>
+
+        <EditText
+            android:id="@+id/register_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_edittext"
+            android:ems="10"
+            android:inputType="textEmailAddress"
+            android:padding="8dp"
+            android:paddingStart="15sp"
+            android:hint="Email"
+            android:textSize="14sp"
+            android:fontFamily="@font/roboto"/>
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:text="Address"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:fontFamily="@font/roboto"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <EditText
+                android:id="@+id/register_address_line1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:background="@drawable/rounded_edittext"
+                android:padding="8dp"
+                android:layout_marginRight="5dp"
+                android:hint="Line 1"
+                android:textSize="14sp"
+                android:fontFamily="@font/roboto"
+                android:paddingStart="15sp"/>
+            <EditText
+                android:id="@+id/register_address_line2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:background="@drawable/rounded_edittext"
+                android:padding="8dp"
+                android:layout_marginLeft="5dp"
+                android:hint="Line 2"
+                android:textSize="14sp"
+                android:fontFamily="@font/roboto"
+                android:paddingStart="15sp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginLeft="16dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:text="City"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:fontFamily="@font/roboto"/>
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginLeft="16dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:text="Province"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:fontFamily="@font/roboto"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/register_city"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_edittext"
+                android:ems="10"
+                android:fontFamily="@font/roboto"
+                android:hint="City"
+                android:inputType="textPersonName"
+                android:padding="8dp"
+                android:paddingStart="15sp"
+                android:textSize="14sp"
+                tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck" />
+
+            <Spinner
+                android:id="@+id/register_province"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_weight="1"
+                android:ems="10"
+                android:spinnerMode="dropdown"
+                android:background="@drawable/rounded_edittext"
+                android:padding="8dp"
+                android:layout_marginLeft="5dp"
+                android:textSize="12sp"
+                android:fontFamily="@font/roboto"
+                android:paddingStart="15sp"
+                android:contentDescription="province"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:text="Mobile Number"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:fontFamily="@font/roboto"/>
+
+        <EditText
+            android:id="@+id/register_telephone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_edittext"
+            android:ems="10"
+            android:fontFamily="@font/roboto"
+            android:inputType="phone"
+            android:padding="8dp"
+            android:paddingStart="15sp"
+            android:text="+94"
+            android:textSize="14sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/roboto"
+                android:text="Date of Birth"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginLeft="16dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:text="Blood Group"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:fontFamily="@font/roboto"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+            <EditText
+                android:id="@+id/register_dob"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:background="@drawable/rounded_edittext"
+                android:padding="8dp"
+                android:layout_marginRight="5dp"
+                android:hint="Date of Birth"
+                android:textSize="14sp"
+                android:fontFamily="@font/roboto"
+                android:paddingStart="15sp"
+                android:clickable="false"
+                android:longClickable="false"
+                android:cursorVisible="false"
+                android:focusableInTouchMode="false"/>
+            <Spinner
+                android:id="@+id/register_blood_group"
+                android:layout_width="5dp"
+                android:layout_height="35dp"
+                android:layout_weight="1"
+                android:ems="10"
+                android:spinnerMode="dropdown"
+                android:background="@drawable/rounded_edittext"
+                android:padding="8dp"
+                android:layout_marginLeft="0dp"
+                android:textSize="12sp"
+                android:fontFamily="@font/roboto"
+                android:paddingStart="15sp"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:text="Password"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:fontFamily="@font/roboto"/>
+
+        <EditText
+            android:id="@+id/register_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_edittext"
+            android:ems="10"
+            android:inputType="textPassword"
+            android:padding="8dp"
+            android:paddingStart="15sp"
+            android:hint="password"
+            android:textSize="14sp"
+            android:fontFamily="@font/roboto"/>
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="@font/roboto"
+            android:text="Confirm Password"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/register_confirm_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_edittext"
+            android:ems="10"
+            android:inputType="textPassword"
+            android:padding="8dp"
+            android:paddingStart="15sp"
+            android:hint="Confirm password"
+            android:textSize="14sp"
+            android:fontFamily="@font/roboto"/>
+
+
+        </LinearLayout>
+    </ScrollView>
+    <LinearLayout
+        android:id="@+id/linerlayout_switch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:gravity="center"
+        android:layout_marginVertical="5dp"
+        android:layout_above="@+id/spin_kit">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sign up as donor "
+            android:fontFamily="@font/roboto_bold"
+            android:textColor="@color/black"/>
+
+        <Switch
+            android:id="@+id/switch_donor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+    </LinearLayout>
+
+    <com.github.ybq.android.spinkit.SpinKitView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/spin_kit"
+        style="@style/SpinKitView.Large.Circle"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_gravity="center"
+        app:SpinKit_Color="@color/app_red"
+        android:visibility="invisible"
+        android:layout_above="@+id/register_btn"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:id="@+id/register_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="70dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginHorizontal="120dp"
+        android:background="@drawable/round_style"
+        android:padding="5dp"
+        android:text="Register"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        android:fontFamily="@font/roboto_bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_alignParentBottom="true"/>
+
+</RelativeLayout>

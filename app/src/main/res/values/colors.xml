@@ -9,8 +9,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="iconFillingColor">#373736</color>
     <color name="app_red">#FE5D7D</color>
-    <color name="gradient_white">#FFFFFF</color>
-    <color name="gradient_red">#FFECEC</color>
-    <color name="lightGrey">#EEEEEE</color>
+    <color name="gradient_white">#FFEEEE</color>
+    <color name="gradient_red">#FFE2E2</color>
+    <color name="gradient_dark_red">#FFC5C5</color>
 
 </resources>
