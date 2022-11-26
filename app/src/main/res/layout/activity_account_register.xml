@@ -394,7 +394,9 @@
         <Switch
             android:id="@+id/switch_donor"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:trackTint="@drawable/newtrack"
+            android:thumbTint="@drawable/newthumb"/>
 
 
     </LinearLayout>

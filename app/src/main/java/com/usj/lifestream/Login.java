@@ -5,8 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
 
-public class Login extends AppCompatActivity {
+public class Login extends AppCompatActivity implements View.OnClickListener{
+    private TextView register;
     SharedPreferences sharedPreferences;
 
     @Override
@@ -20,6 +23,9 @@ public class Login extends AppCompatActivity {
             firstRun();
         }
 
+        register =findViewById(R.id.register_text);
+        register.setOnClickListener(this);
+
     }
     public void firstRun() {
         Intent intent = new Intent(Login.this, OnBoardingActivity.class);
@@ -27,5 +33,21 @@ public class Login extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putBoolean("firstStartBoarding", false);
         editor.apply();
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch(view.getId()){
+            //case R.id.btn_google_signIn:
+                //signIn();
+                //break;
+            //case R.id.btn_signIn:
+                //startActivity(new Intent(Login.this,MindMelloAccountLogin.class));
+                //break;
+            case R.id.register_text:
+                startActivity(new Intent(Login.this,AccountRegister.class));
+                break;
+
+        }
     }
 }
