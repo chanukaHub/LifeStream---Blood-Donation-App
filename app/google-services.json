@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "449641954601",
+    "project_id": "lifestream-34cf5",
+    "storage_bucket": "lifestream-34cf5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:449641954601:android:93c1fecf76e705217e0b38",
+        "android_client_info": {
+          "package_name": "com.usj.lifestream"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "449641954601-j3uhbl41hrplnccj6qkfcbe3lhehrmal.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAUm-kxzoo3emFvnY231MujDC64UI1f9uY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "449641954601-j3uhbl41hrplnccj6qkfcbe3lhehrmal.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

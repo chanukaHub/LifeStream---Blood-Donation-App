@@ -370,7 +370,8 @@
             android:paddingStart="15sp"
             android:hint="Confirm password"
             android:textSize="14sp"
-            android:fontFamily="@font/roboto"/>
+            android:fontFamily="@font/roboto"
+            android:layout_marginBottom="5dp"/>
 
 
         </LinearLayout>
@@ -417,7 +418,7 @@
         android:id="@+id/register_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="70dp"
+        android:layout_marginBottom="60dp"
         android:layout_centerHorizontal="true"
         android:layout_marginHorizontal="120dp"
         android:background="@drawable/round_style"
