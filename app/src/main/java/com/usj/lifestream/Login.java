@@ -6,10 +6,12 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class Login extends AppCompatActivity implements View.OnClickListener{
     private TextView register;
+    private Button googleButton, lifeStreamButton;
     SharedPreferences sharedPreferences;
 
     @Override
@@ -26,6 +28,9 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
         register =findViewById(R.id.register_text);
         register.setOnClickListener(this);
 
+        lifeStreamButton = findViewById(R.id.btn_signIn);
+        lifeStreamButton.setOnClickListener(this);
+
     }
     public void firstRun() {
         Intent intent = new Intent(Login.this, OnBoardingActivity.class);
@@ -41,9 +46,9 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
             //case R.id.btn_google_signIn:
                 //signIn();
                 //break;
-            //case R.id.btn_signIn:
-                //startActivity(new Intent(Login.this,MindMelloAccountLogin.class));
-                //break;
+            case R.id.btn_signIn:
+                startActivity(new Intent(Login.this,AccountLogin.class));
+                break;
             case R.id.register_text:
                 startActivity(new Intent(Login.this,AccountRegister.class));
                 break;
