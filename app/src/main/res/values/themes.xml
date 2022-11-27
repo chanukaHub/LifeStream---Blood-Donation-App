@@ -1,9 +1,9 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.LifeStream" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <style name="Theme.LifeStream" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Primary brand color. -->
         <item name="android:windowBackground">@drawable/default_splash_screen</item>
-        <item name="colorPrimary">@color/app_red</item>
+        <item name="colorPrimary">@color/purple_200</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->

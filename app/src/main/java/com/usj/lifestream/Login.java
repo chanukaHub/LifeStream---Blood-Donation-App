@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -18,7 +19,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         sharedPreferences= getSharedPreferences("prefs", MODE_PRIVATE);
         boolean firstStart = sharedPreferences.getBoolean("firstStartBoarding", true);
         if (firstStart) {
