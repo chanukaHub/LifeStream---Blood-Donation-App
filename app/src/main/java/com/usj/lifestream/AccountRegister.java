@@ -124,7 +124,7 @@ public class AccountRegister extends AppCompatActivity implements View.OnClickLi
             public void onClick(View view) {
                 DatePickerDialog dialog = new DatePickerDialog(AccountRegister.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
-                    public void onDateSet(DatePicker datePicker, int year, int month, int dayofMonth) {
+                    public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                         month = month+1;
                         selectedDate =day+"/"+month+"/"+year;
                         selectDateEditText.setText(selectedDate);
