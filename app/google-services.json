@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "449641954601",
-    "project_id": "lifestream-34cf5",
-    "storage_bucket": "lifestream-34cf5.appspot.com"
+    "project_number": "737924316024",
+    "project_id": "lifestream-fc508",
+    "storage_bucket": "lifestream-fc508.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:449641954601:android:93c1fecf76e705217e0b38",
+        "mobilesdk_app_id": "1:737924316024:android:65194926cf0a60aa28a68d",
         "android_client_info": {
           "package_name": "com.usj.lifestream"
         }
       },
       "oauth_client": [
         {
-          "client_id": "449641954601-j3uhbl41hrplnccj6qkfcbe3lhehrmal.apps.googleusercontent.com",
+          "client_id": "737924316024-9tbnddv2rsrbsiav7mh19n4oa5t55fdm.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAUm-kxzoo3emFvnY231MujDC64UI1f9uY"
+          "current_key": "AIzaSyAKE2kwB54omsJ_m1Ib27akeoWCTAB0GZI"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "449641954601-j3uhbl41hrplnccj6qkfcbe3lhehrmal.apps.googleusercontent.com",
+              "client_id": "737924316024-9tbnddv2rsrbsiav7mh19n4oa5t55fdm.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
