@@ -37,7 +37,7 @@ public class AccountRegister extends AppCompatActivity implements View.OnClickLi
     private EditText firstNameEditText,lastNameEditText,emailEditText,line1EditText,line2EditText,cityEditText,mobileEditText,selectDateEditText,passwordEditText,confirmPasswordEditText;
     private FirebaseAuth mAuth;
     private ProgressBar progressBar;
-    Boolean switchState;
+    private boolean switchState;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
