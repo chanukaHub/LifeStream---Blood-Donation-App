@@ -5,7 +5,7 @@
         <!-- Primary brand color. -->
         <item name="android:windowBackground">@drawable/default_splash_screen</item>
         <item name="colorPrimary">@color/purple_200</item>
-        <item name="colorPrimaryVariant">@color/black</item>
+        <item name="colorPrimaryVariant">@color/gradient_dark_red</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
