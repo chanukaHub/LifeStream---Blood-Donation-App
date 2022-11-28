@@ -38,13 +38,13 @@ public class AccountRegister extends AppCompatActivity implements View.OnClickLi
     private FirebaseAuth mAuth;
     private ProgressBar progressBar;
     private boolean switchState;
+    private Switch simpleSwitch;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account_register);
 
-        Switch simpleSwitch = (Switch) findViewById(R.id.switch_donor);
-        switchState = simpleSwitch.isChecked();
+        simpleSwitch = (Switch) findViewById(R.id.switch_donor);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -158,6 +158,7 @@ public class AccountRegister extends AppCompatActivity implements View.OnClickLi
         sMobile = mobileEditText.getText().toString().trim();
         sPassword= passwordEditText.getText().toString().trim();
         sConfirmPassword= confirmPasswordEditText.getText().toString().trim();
+        switchState = simpleSwitch.isChecked();
 
         if(sFirstName.isEmpty()){
             firstNameEditText.setError("First Name is required");

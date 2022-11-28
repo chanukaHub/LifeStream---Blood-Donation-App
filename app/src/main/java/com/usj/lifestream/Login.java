@@ -37,7 +37,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        //getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         sharedPreferences= getSharedPreferences("prefs", MODE_PRIVATE);
         boolean firstStart = sharedPreferences.getBoolean("firstStartBoarding", true);
         if (firstStart) {

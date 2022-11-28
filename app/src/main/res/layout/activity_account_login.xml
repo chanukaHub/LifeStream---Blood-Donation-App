@@ -54,6 +54,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
+        android:layout_marginBottom="70dp"
         android:orientation="vertical"
         android:layout_above="@+id/login_btn">
 
@@ -114,19 +115,19 @@
             android:textSize="17dp"
             android:fontFamily="@font/roboto"/>
 
-        <com.github.ybq.android.spinkit.SpinKitView
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/spin_kit2"
-            style="@style/SpinKitView.Large.Circle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            app:SpinKit_Color="@color/blackApp"
-            android:visibility="invisible"
-            android:layout_marginTop="20dp"/>
-
-
     </LinearLayout>
+
+    <com.github.ybq.android.spinkit.SpinKitView
+        android:id="@+id/spin_kit2"
+        style="@style/SpinKitView.Large.Circle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:visibility="invisible"
+        app:SpinKit_Color="@color/blackApp"
+        android:layout_above="@+id/login_btn"
+        android:layout_centerHorizontal="true"/>
 
     <Button
         android:id="@+id/login_btn"
