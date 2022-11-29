@@ -125,7 +125,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:visibility="invisible"
-        app:SpinKit_Color="@color/blackApp"
+        app:SpinKit_Color="@color/app_red"
         android:layout_above="@+id/login_btn"
         android:layout_centerHorizontal="true"/>
 
