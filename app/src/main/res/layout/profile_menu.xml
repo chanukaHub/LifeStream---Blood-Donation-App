@@ -1,16 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:clipToPadding="false"
-    android:padding="2dp"
-    android:clickable="true">
+    android:padding="2dp">
+
+    <LinearLayout
+        android:id="@+id/welcome_note"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginEnd="10dp"
+        android:gravity="right">
+
+        <TextView
+            android:id="@+id/title1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="welcome"
+            android:textColor="@color/app_red"
+            android:fontFamily="@font/roboto"/>
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/app_red"
+            android:fontFamily="@font/roboto_bold"/>
+
+    </LinearLayout>
+
 
     <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_toEndOf="@+id/welcome_note"
         android:id="@+id/toolbar_profile_image"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:src="@mipmap/ic_launcher"/>
+        android:src="@mipmap/ic_launcher"
+        android:clickable="true"/>
 
-</FrameLayout>
+</RelativeLayout>

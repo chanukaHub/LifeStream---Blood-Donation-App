@@ -6,20 +6,26 @@
     android:layout_height="match_parent"
     tools:context=".fragments.HomeFragment">
 
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/viewPager2"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:paddingStart="40dp"
-        android:paddingEnd="40dp" />
+        android:layout_height="200dp"
+        android:gravity="center">
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewPager2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingStart="30dp"
+            android:paddingEnd="30dp" />
 
-    <com.github.ybq.android.spinkit.SpinKitView
-        android:id="@+id/spin_kit3"
-        style="@style/SpinKitView.Large.Circle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:visibility="invisible"
-        app:SpinKit_Color="@color/app_red" />
+        <com.github.ybq.android.spinkit.SpinKitView
+            android:id="@+id/spin_kit3"
+            style="@style/SpinKitView.Large.Circle"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_centerInParent="true"
+            android:visibility="invisible"
+            app:SpinKit_Color="@color/app_red" />
+    </RelativeLayout>
+
 
 </RelativeLayout>

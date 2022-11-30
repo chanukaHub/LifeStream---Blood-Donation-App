@@ -6,7 +6,7 @@
     android:background="@null"
     android:id="@+id/imageSlide"
     android:adjustViewBounds="true"
-    app:riv_corner_radius="12dp"
+    app:riv_corner_radius="17dp"
     android:scaleType="fitXY"
     >
 
