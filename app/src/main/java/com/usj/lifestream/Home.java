@@ -1,14 +1,19 @@
 package com.usj.lifestream;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.MenuItemCompat;
 import androidx.fragment.app.Fragment;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -47,6 +52,11 @@ public class Home extends AppCompatActivity implements BottomNavigationView.OnNa
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        if(!isConnectingToInternet(this))
+        {
+            showInternetDialog();
+        }
+
         user= FirebaseAuth.getInstance().getCurrentUser();
         reference= FirebaseDatabase.getInstance().getReference("users");
         userId= user.getUid();
@@ -70,20 +80,67 @@ public class Home extends AppCompatActivity implements BottomNavigationView.OnNa
                 .commit();
     }
 
+    private void showInternetDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setCancelable(false);
+
+        View view = LayoutInflater.from(this).inflate(R.layout.no_internet_dialog, findViewById(R.id.no_internet_layout));
+        view.findViewById(R.id.try_again).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!isConnectingToInternet(Home.this)) {
+                    showInternetDialog();
+                } else {
+                    startActivity(new Intent(getApplicationContext(), Login.class));
+                    finish();
+                }
+            }
+        });
+
+        builder.setView(view);
+
+        AlertDialog alertDialog = builder.create();
+
+        alertDialog.show();
+
+    }
+
+    public static boolean isConnectingToInternet(Context context)
+    {
+        ConnectivityManager connectivity = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo wifiConn = connectivity.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+        NetworkInfo mobileConn = connectivity.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
+
+        return (wifiConn != null && wifiConn.isConnected()) || (mobileConn != null && mobileConn.isConnected());
+    }
+
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         Fragment fragment;
         switch (item.getItemId()){
             case R.id.item1:
+                if(!isConnectingToInternet(this))
+                {
+                    showInternetDialog();
+                }
                 //nav.setCheckedItem(R.id.menu_home);
                 displayFragment(homeFragment);
                 break;
             case R.id.item2:
+                if(!isConnectingToInternet(this))
+                {
+                    showInternetDialog();
+                }
                 fragment = new SearchFragment();
                 //nav.setCheckedItem(R.id.menu_categories);
                 displayFragment(fragment);
                 break;
             case R.id.item3:
+                if(!isConnectingToInternet(this))
+                {
+                    showInternetDialog();
+                }
                 fragment = new EventFragment();
                 //nav.setCheckedItem(R.id.menu_favorite);
                 displayFragment(fragment);
@@ -100,7 +157,7 @@ public class Home extends AppCompatActivity implements BottomNavigationView.OnNa
         View view = MenuItemCompat.getActionView(menuItem);
 
         CircleImageView profileImage = view.findViewById(R.id.toolbar_profile_image);
-        final TextView textView =view.findViewById(R.id.title);
+        TextView textView = view.findViewById(R.id.title);
 
         reference.child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -130,6 +187,7 @@ public class Home extends AppCompatActivity implements BottomNavigationView.OnNa
             Glide.with(this).load(this.getResources().getIdentifier("profile", "drawable", this.getPackageName())).into(profileImage);
         }else {
             Glide.with(this).load(user.getPhotoUrl()).into(profileImage);
+            textView.setText(user.getDisplayName());
         }
 
         profileImage.setOnClickListener(new View.OnClickListener() {
@@ -145,5 +203,14 @@ public class Home extends AppCompatActivity implements BottomNavigationView.OnNa
         });
 
         return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(!isConnectingToInternet(this))
+        {
+            showInternetDialog();
+        }
     }
 }

@@ -1,11 +1,16 @@
 package com.usj.lifestream;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -37,6 +42,12 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        if(!isConnectingToInternet(this))
+        {
+           showInternetDialog();
+        }
+
         //getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         sharedPreferences= getSharedPreferences("prefs", MODE_PRIVATE);
         boolean firstStart = sharedPreferences.getBoolean("firstStartBoarding", true);
@@ -57,6 +68,43 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
         googleButton.setOnClickListener(this);
 
     }
+
+    private void showInternetDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setCancelable(false);
+
+        View view = LayoutInflater.from(this).inflate(R.layout.no_internet_dialog, findViewById(R.id.no_internet_layout));
+        view.findViewById(R.id.try_again).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!isConnectingToInternet(Login.this)) {
+                    showInternetDialog();
+                } else {
+                    startActivity(new Intent(getApplicationContext(), Login.class));
+                    finish();
+                }
+            }
+        });
+
+        builder.setView(view);
+
+        AlertDialog alertDialog = builder.create();
+
+        alertDialog.show();
+
+    }
+
+    public static boolean isConnectingToInternet(Context context)
+    {
+        ConnectivityManager connectivity = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo wifiConn = connectivity.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+        NetworkInfo mobileConn = connectivity.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
+
+        return (wifiConn != null && wifiConn.isConnected()) || (mobileConn != null && mobileConn.isConnected());
+    }
+
+
     @Override
     protected void onStart() {
         super.onStart();

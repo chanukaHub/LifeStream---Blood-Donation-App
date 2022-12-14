@@ -111,7 +111,7 @@ public class HomeFragment extends Fragment {
         viewPager2.getChildAt(0).setOverScrollMode(RecyclerView.OVER_SCROLL_NEVER);
 
         CompositePageTransformer compositePageTransformer =new CompositePageTransformer();
-        compositePageTransformer.addTransformer(new MarginPageTransformer(80));
+        compositePageTransformer.addTransformer(new MarginPageTransformer(0));
         compositePageTransformer.addTransformer(new ViewPager2.PageTransformer() {
             @Override
             public void transformPage(@NonNull View page, float position) {

@@ -3,6 +3,9 @@
     <string name="app_name1">Life</string>
     <string name="app_name2">Stream</string>
     <string name="sub_topic">Donate | Save | Community</string>
+    <string name="no_internet_connection">No internet Connection</string>
+    <string name="no_internet_txt">Your internet connection is currently in not available. Please check and try again</string>
+    <string name="try_again">Try Again</string>
 
     <string-array name="province_array">
         <item>--select--</item>
