@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.CompositePageTransformer;
 import androidx.viewpager2.widget.MarginPageTransformer;
@@ -35,7 +36,9 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.usj.lifestream.R;
+import com.usj.lifestream.adapters.BloodBankAdapter;
 import com.usj.lifestream.adapters.EventSliderAdapter;
+import com.usj.lifestream.model.BloodBank;
 import com.usj.lifestream.model.Event;
 
 import java.util.ArrayList;
@@ -49,8 +52,11 @@ public class HomeFragment extends Fragment {
     List<Event> eventsList;
     private Handler slideHandler = new Handler();
     private EventSliderAdapter adapter;
+    private BloodBankAdapter bloodBankAdapter;
     private static ArrayList<Event> playerList = new ArrayList<Event>();
     boolean isFirstLoad = true;
+    private RecyclerView recyclerView;
+    private List<BloodBank> bloodBankList;
 
 
     @Override
@@ -64,13 +70,26 @@ public class HomeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        progressBar = view.findViewById(R.id.spin_kit3);
-        Sprite doubleBounce = new Wave();
-        progressBar.setIndeterminateDrawable(doubleBounce);
 
         if (isFirstLoad){
+            progressBar = view.findViewById(R.id.spin_kit3);
+            Sprite doubleBounce = new Wave();
+            progressBar.setIndeterminateDrawable(doubleBounce);
             progressBar.setVisibility(View.VISIBLE);
         }
+
+        recyclerView =view.findViewById(R.id.blood_bank_recyclerView);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),1));
+
+        bloodBankList =new ArrayList<>();
+        bloodBankList.add(new BloodBank("Blood1"));
+        bloodBankList.add(new BloodBank("Blood2"));
+        bloodBankList.add(new BloodBank("Blood3"));
+        Collections.reverse(bloodBankList);
+
+        bloodBankAdapter= new BloodBankAdapter(getActivity(),bloodBankList);
+        recyclerView.setAdapter(bloodBankAdapter);
 
 
         viewPager2 = view.findViewById(R.id.viewPager2);
