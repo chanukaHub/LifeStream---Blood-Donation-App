@@ -50,11 +50,13 @@ public class HomeFragment extends Fragment {
     private Handler slideHandler = new Handler();
     private EventSliderAdapter adapter;
     private static ArrayList<Event> playerList = new ArrayList<Event>();
+    boolean isFirstLoad = true;
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_home, container, false);
     }
@@ -65,7 +67,11 @@ public class HomeFragment extends Fragment {
         progressBar = view.findViewById(R.id.spin_kit3);
         Sprite doubleBounce = new Wave();
         progressBar.setIndeterminateDrawable(doubleBounce);
-        progressBar.setVisibility(View.VISIBLE);
+
+        if (isFirstLoad){
+            progressBar.setVisibility(View.VISIBLE);
+        }
+
 
         viewPager2 = view.findViewById(R.id.viewPager2);
         eventsList= new ArrayList<>();
@@ -79,7 +85,10 @@ public class HomeFragment extends Fragment {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                         if (!queryDocumentSnapshots.isEmpty()) {
-                            progressBar.setVisibility(View.GONE);
+                            if (isFirstLoad){
+                                progressBar.setVisibility(View.GONE);
+                                isFirstLoad = false;
+                            }
                             List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
                             for (DocumentSnapshot d : list) {
                                 Event e = d.toObject(Event.class);

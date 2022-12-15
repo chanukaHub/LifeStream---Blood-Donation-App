@@ -38,12 +38,14 @@
         android:layout_below="@+id/relativeLayout_1">
         
         <RelativeLayout
+            android:gravity="center"
             android:layout_width="0dp"
             android:layout_height="180dp"
             android:layout_weight="1"
             android:layout_margin="5dp"
             android:background="@drawable/round_white_btn_style"
             android:clickable="true"
+
             />
         <RelativeLayout
             android:layout_width="0dp"
