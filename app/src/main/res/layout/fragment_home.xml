@@ -33,29 +33,98 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_margin="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginHorizontal="18dp"
         android:weightSum="2"
         android:layout_below="@+id/relativeLayout_1">
         
         <RelativeLayout
+            android:id="@+id/donate_blood_relativeLayout_btn"
             android:gravity="center"
             android:layout_width="0dp"
-            android:layout_height="180dp"
+            android:layout_height="170dp"
             android:layout_weight="1"
             android:layout_margin="5dp"
             android:background="@drawable/round_white_btn_style"
-            android:clickable="true"
+            android:clickable="true">
 
-            />
+            <ImageView
+                android:id="@+id/donate_blood_imageView"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:src="@drawable/donate_blood_icon"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Donate Blood"
+                android:layout_below="@id/donate_blood_imageView"
+                android:textStyle="bold"
+                android:fontFamily="@font/roboto_bold"
+                android:layout_margin="10dp"
+                android:textAlignment="center"
+                android:textColor="@color/black"/>
+
+        </RelativeLayout>
+
         <RelativeLayout
+            android:id="@+id/request_blood_relativeLayout_btn"
+            android:gravity="center"
             android:layout_width="0dp"
-            android:layout_height="180dp"
+            android:layout_height="170dp"
             android:layout_weight="1"
             android:layout_margin="5dp"
             android:background="@drawable/round_white_btn_style"
-            android:clickable="true"
-            />
+            android:clickable="true">
+
+            <ImageView
+                android:id="@+id/request_blood_imageView"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:src="@drawable/request_blood_icon"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Request Blood"
+                android:layout_below="@id/request_blood_imageView"
+                android:textStyle="bold"
+                android:fontFamily="@font/roboto_bold"
+                android:layout_margin="10dp"
+                android:textAlignment="center"
+                android:textColor="@color/black"/>
+
+        </RelativeLayout>
         
     </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/blood_bank_relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/linerLayout_1"
+        android:layout_margin="20dp">
+
+        <TextView
+            android:id="@+id/text1_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Blood Bank"
+            android:layout_marginStart="20dp"
+            android:fontFamily="@font/roboto_bold"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/see_more_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="See all >"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="@font/roboto_bold"
+            android:textColor="@color/black"
+            android:layout_alignParentRight="true"/>
+
+
+    </RelativeLayout>
+
 
 </RelativeLayout>

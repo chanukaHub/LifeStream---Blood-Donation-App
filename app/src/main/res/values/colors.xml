@@ -8,7 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="iconFillingColor">#373736</color>
-    <color name="app_red">#FE5D7D</color>
+    <color name="app_red">#E81E25</color>
     <color name="gradient_white">#FFF4F4</color>
     <color name="gradient_red">#FFE9E9</color>
     <color name="gradient_dark_red">#FFD3D3</color>
