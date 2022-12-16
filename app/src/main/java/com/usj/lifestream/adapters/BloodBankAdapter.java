@@ -46,7 +46,7 @@ public class BloodBankAdapter extends RecyclerView.Adapter<BloodBankAdapter.Bloo
         TextView textView;
         public BloodBankViewHolder(@NonNull View itemView) {
             super(itemView);
-            textView = itemView.findViewById(R.id.name_textView);
+            textView = itemView.findViewById(R.id.name_textView1);
         }
     }
 }

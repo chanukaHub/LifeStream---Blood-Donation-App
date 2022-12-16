@@ -1,5 +1,6 @@
 package com.usj.lifestream.fragments;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -86,7 +87,7 @@ public class HomeFragment extends Fragment {
         bloodBankList.add(new BloodBank("Blood1"));
         bloodBankList.add(new BloodBank("Blood2"));
         bloodBankList.add(new BloodBank("Blood3"));
-        Collections.reverse(bloodBankList);
+        //Collections.reverse(bloodBankList);
 
         bloodBankAdapter= new BloodBankAdapter(getActivity(),bloodBankList);
         recyclerView.setAdapter(bloodBankAdapter);
@@ -101,6 +102,7 @@ public class HomeFragment extends Fragment {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
         db.collection("event").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @SuppressLint("NotifyDataSetChanged")
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                         if (!queryDocumentSnapshots.isEmpty()) {
