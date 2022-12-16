@@ -54,7 +54,7 @@
                     android:layout_marginVertical="3dp"/>
 
                 <ImageView
-                    android:id="@+id/imageView4"
+                    android:id="@+id/imageViewCall"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:src="@drawable/call_red_icon"
