@@ -34,6 +34,9 @@ public class BloodBankAdapter extends RecyclerView.Adapter<BloodBankAdapter.Bloo
     public void onBindViewHolder(@NonNull BloodBankAdapter.BloodBankViewHolder holder, int position) {
         BloodBank b = bloodBanksList.get(position);
         holder.textView.setText(b.name);
+        holder.locationTextView.setText(b.address);
+        holder.telephoneTextView.setText(b.phone);
+        holder.hoursTextView.setText(b.hours);
 
     }
 
@@ -43,10 +46,13 @@ public class BloodBankAdapter extends RecyclerView.Adapter<BloodBankAdapter.Bloo
     }
 
     public class BloodBankViewHolder extends RecyclerView.ViewHolder {
-        TextView textView;
+        TextView textView,locationTextView,telephoneTextView,hoursTextView;
         public BloodBankViewHolder(@NonNull View itemView) {
             super(itemView);
             textView = itemView.findViewById(R.id.name_textView1);
+            locationTextView= itemView.findViewById(R.id.location_textView);
+            telephoneTextView= itemView.findViewById(R.id.phone_textView);
+            hoursTextView= itemView.findViewById(R.id.hours_textView);
         }
     }
 }

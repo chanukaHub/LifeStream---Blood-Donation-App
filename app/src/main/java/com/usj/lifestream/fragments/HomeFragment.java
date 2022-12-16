@@ -34,6 +34,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.usj.lifestream.R;
@@ -51,13 +52,14 @@ public class HomeFragment extends Fragment {
     private ProgressBar progressBar;
     ViewPager2 viewPager2;
     List<Event> eventsList;
+    private static List<BloodBank> bloodBankList;
     private Handler slideHandler = new Handler();
     private EventSliderAdapter adapter;
     private BloodBankAdapter bloodBankAdapter;
     private static ArrayList<Event> playerList = new ArrayList<Event>();
     boolean isFirstLoad = true;
     private RecyclerView recyclerView;
-    private List<BloodBank> bloodBankList;
+
 
 
     @Override
@@ -77,21 +79,77 @@ public class HomeFragment extends Fragment {
             Sprite doubleBounce = new Wave();
             progressBar.setIndeterminateDrawable(doubleBounce);
             progressBar.setVisibility(View.VISIBLE);
+            bloodBankList=new ArrayList<>();
+
+            FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+            db.collection("event").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                @SuppressLint("NotifyDataSetChanged")
+                @Override
+                public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                    if (!queryDocumentSnapshots.isEmpty()) {
+                        if (isFirstLoad){
+                            progressBar.setVisibility(View.GONE);
+                            isFirstLoad = false;
+                        }
+                        List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
+                        for (DocumentSnapshot d : list) {
+                            Event e = d.toObject(Event.class);
+                            eventsList.add(e);
+                        }
+                        for (Event q :eventsList){
+                            addToPlayerList(q);
+                        }
+
+                        adapter.notifyDataSetChanged();
+                    } else {
+                        // if the snapshot is empty we are displaying a toast message.
+                        Toast.makeText(getContext(), "No data found in Database", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    // if we do not get any data or any error we are displaying
+                    // a toast message that we do not get any data
+                    Toast.makeText(getContext(), "Fail to get the data.", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+
+            db.collection("BloodBank").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                @SuppressLint("NotifyDataSetChanged")
+                @Override
+                public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                    if (!queryDocumentSnapshots.isEmpty()) {
+                        List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
+                        for (DocumentSnapshot d : list) {
+                            BloodBank b = d.toObject(BloodBank.class);
+                            bloodBankList.add(b);
+                        }
+                        Collections.reverse(bloodBankList);
+                        bloodBankAdapter.notifyDataSetChanged();
+                    } else {
+                        // if the snapshot is empty we are displaying a toast message.
+                        Toast.makeText(getContext(), "No data found in Database", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    // if we do not get any data or any error we are displaying
+                    // a toast message that we do not get any data
+                    Toast.makeText(getContext(), "Fail to get the data.", Toast.LENGTH_SHORT).show();
+                }
+            });
+
         }
 
         recyclerView =view.findViewById(R.id.blood_bank_recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),1));
-
-        bloodBankList =new ArrayList<>();
-        bloodBankList.add(new BloodBank("Blood1"));
-        bloodBankList.add(new BloodBank("Blood2"));
-        bloodBankList.add(new BloodBank("Blood3"));
-        //Collections.reverse(bloodBankList);
-
-        bloodBankAdapter= new BloodBankAdapter(getActivity(),bloodBankList);
-        recyclerView.setAdapter(bloodBankAdapter);
-
 
         viewPager2 = view.findViewById(R.id.viewPager2);
         eventsList= new ArrayList<>();
@@ -99,41 +157,8 @@ public class HomeFragment extends Fragment {
         adapter = new EventSliderAdapter(getActivity(),playerList,viewPager2);
         viewPager2.setAdapter(adapter);
 
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-
-        db.collection("event").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                    @SuppressLint("NotifyDataSetChanged")
-                    @Override
-                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                        if (!queryDocumentSnapshots.isEmpty()) {
-                            if (isFirstLoad){
-                                progressBar.setVisibility(View.GONE);
-                                isFirstLoad = false;
-                            }
-                            List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
-                            for (DocumentSnapshot d : list) {
-                                Event e = d.toObject(Event.class);
-                                eventsList.add(e);
-                            }
-                            for (Event q :eventsList){
-                                addToPlayerList(q);
-                            }
-
-                            adapter.notifyDataSetChanged();
-                        } else {
-                            // if the snapshot is empty we are displaying a toast message.
-                            Toast.makeText(getContext(), "No data found in Database", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-
-                }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                // if we do not get any data or any error we are displaying
-                // a toast message that we do not get any data
-                Toast.makeText(getContext(), "Fail to get the data.", Toast.LENGTH_SHORT).show();
-            }
-        });
+        bloodBankAdapter= new BloodBankAdapter(getActivity(),bloodBankList);
+        recyclerView.setAdapter(bloodBankAdapter);
 
         viewPager2.setClipToPadding(false);
         viewPager2.setClipChildren(false);

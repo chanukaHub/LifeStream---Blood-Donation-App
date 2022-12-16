@@ -6,7 +6,7 @@ import android.os.Parcelable;
 import androidx.annotation.NonNull;
 
 public class BloodBank implements Parcelable {
-    public String name,address,location,hours;
+    public String name,address,phone,hours;
     public double latitude,longitude;
 
     public BloodBank() {
@@ -16,10 +16,10 @@ public class BloodBank implements Parcelable {
         this.name = name;
     }
 
-    public BloodBank(String name, String address, String location, String hours, double latitude, double longitude) {
+    public BloodBank(String name, String address, String phone, String hours, double latitude, double longitude) {
         this.name = name;
         this.address = address;
-        this.location = location;
+        this.phone = phone;
         this.hours = hours;
         this.latitude = latitude;
         this.longitude = longitude;
@@ -28,7 +28,7 @@ public class BloodBank implements Parcelable {
     protected BloodBank(Parcel in) {
         name = in.readString();
         address = in.readString();
-        location = in.readString();
+        phone = in.readString();
         hours = in.readString();
         latitude = in.readDouble();
         longitude = in.readDouble();
@@ -55,7 +55,7 @@ public class BloodBank implements Parcelable {
     public void writeToParcel(@NonNull Parcel dest, int flags) {
         dest.writeString(name);
         dest.writeString(address);
-        dest.writeString(location);
+        dest.writeString(phone);
         dest.writeString(hours);
         dest.writeDouble(latitude);
         dest.writeDouble(longitude);
