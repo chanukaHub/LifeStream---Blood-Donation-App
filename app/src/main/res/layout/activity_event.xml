@@ -1,10 +1,129 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/main_background"
+    android:layout_width="match_parent"
+    android:background="@drawable/main_background">
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".EventActivity">
 
+    <ImageView
+        android:id="@+id/event_imageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true" />
+
+    <TextView
+        android:id="@+id/event_name_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/event_imageView"
+        android:layout_margin="15dp"
+        android:fontFamily="@font/roboto_bold"
+        android:text="Name"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
+
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="3"
+        android:layout_below="@id/event_name_textView"
+        android:layout_marginHorizontal="15dp">
+
+        <TableRow
+            android:padding="3dp">
+
+            <TextView
+                android:text="Date"
+                android:fontFamily="@font/roboto_bold"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:text=":"
+                android:fontFamily="@font/roboto_bold"
+                android:textColor="@color/black"
+                android:layout_marginHorizontal="5dp"/>
+
+            <TextView
+                android:id="@+id/textView_date"
+                android:text=""
+                android:fontFamily="@font/roboto"
+                android:textColor="@color/black"/>
+        </TableRow>
+
+        <TableRow
+            android:padding="3dp">
+
+            <TextView
+                android:text="Time"
+                android:fontFamily="@font/roboto_bold"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:text=":"
+                android:fontFamily="@font/roboto_bold"
+                android:textColor="@color/black"
+                android:layout_marginHorizontal="5dp"/>
+
+            <TextView
+                android:id="@+id/textView_time"
+                android:text=""
+                android:fontFamily="@font/roboto"
+                android:textColor="@color/black"/>
+        </TableRow>
+
+        <TableRow
+            android:padding="3dp">
+
+            <TextView
+                android:text="Venue"
+                android:fontFamily="@font/roboto_bold"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:text=":"
+                android:fontFamily="@font/roboto_bold"
+                android:textColor="@color/black"
+                android:layout_marginHorizontal="5dp"/>
+
+            <TextView
+                android:id="@+id/textView_venue"
+                android:text=""
+                android:fontFamily="@font/roboto"
+                android:textColor="@color/black" />
+        </TableRow>
+
+    </TableLayout>
+
+    <TextView
+        android:id="@+id/dec_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginHorizontal="15dp"
+        android:fontFamily="@font/roboto_bold"
+        android:text="Description"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:layout_below="@+id/tableLayout"/>
+
+    <TextView
+        android:id="@+id/event_dec_textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:layout_marginVertical="5dp"
+        android:layout_marginHorizontal="15dp"
+        android:layout_below="@+id/dec_label"/>
+
+
 </RelativeLayout>
+
+</ScrollView>

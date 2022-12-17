@@ -8,30 +8,29 @@ import androidx.annotation.NonNull;
 import com.google.firebase.database.Exclude;
 
 public class Event implements Parcelable {
-    @Exclude
-    public String name;
-    public String venue;
-    public String date;
-    public String url;
 
+    public String name,date,time,venue,description,url;
 
     public Event() {
     }
 
-    public Event(String name, String venue, String date, String url) {
-
+    public Event(String name, String date, String time, String venue, String description, String url) {
         this.name = name;
-        this.venue = venue;
         this.date = date;
+        this.time = time;
+        this.venue = venue;
+        this.description = description;
         this.url = url;
     }
 
+
     protected Event(Parcel in) {
         name = in.readString();
-        venue= in.readString();
         date = in.readString();
+        time = in.readString();
+        venue = in.readString();
+        description = in.readString();
         url = in.readString();
-
     }
 
     public static final Creator<Event> CREATOR = new Creator<Event>() {
@@ -54,8 +53,10 @@ public class Event implements Parcelable {
     @Override
     public void writeToParcel(@NonNull Parcel dest, int flags) {
         dest.writeString(name);
-        dest.writeString(venue);
         dest.writeString(date);
+        dest.writeString(time);
+        dest.writeString(venue);
+        dest.writeString(description);
         dest.writeString(url);
     }
 }
