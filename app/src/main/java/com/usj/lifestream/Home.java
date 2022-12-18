@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -45,7 +46,6 @@ public class Home extends AppCompatActivity implements BottomNavigationView.OnNa
     Fragment homeFragment;
     private DatabaseReference reference;
     private String userId;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -159,22 +159,29 @@ public class Home extends AppCompatActivity implements BottomNavigationView.OnNa
         CircleImageView profileImage = view.findViewById(R.id.toolbar_profile_image);
         TextView textView = view.findViewById(R.id.title);
 
+        Drawable someImage = getResources().getDrawable(R.drawable.profile);
+
         reference.child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 User userProfile=snapshot.getValue(User.class);
 
-                if (userProfile != null){
-                    //textView.setText(userProfile.email);
-                    textView.setText(userProfile.firstName+" "+userProfile.lastName);
-
-                }else {
-                    GoogleSignInAccount signInAccount = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
-                    if (signInAccount != null){
-                        //textView.setText(signInAccount.getEmail());
-                        textView.setText(signInAccount.getDisplayName());
+                if (userProfile != null) {
+                    if (userProfile.profileURL != null) {
+                        Glide.with(Home.this).load(userProfile.profileURL).centerCrop().error(someImage).into(profileImage);
+                    } else if (user.getPhotoUrl() != null) {
+                        Glide.with(Home.this).load(user.getPhotoUrl()).into(profileImage);
+                    } else {
+                        Glide.with(Home.this).load(someImage).centerCrop().error(someImage).into(profileImage);
                     }
+                    textView.setText(userProfile.firstName + " " + userProfile.lastName);
+                }else {
+                GoogleSignInAccount signInAccount = GoogleSignIn.getLastSignedInAccount(Home.this);
+                if (signInAccount != null){
+                    Glide.with(Home.this).load(user.getPhotoUrl()).into(profileImage);
+                    textView.setText(signInAccount.getDisplayName());
                 }
+            }
             }
 
             @Override
@@ -183,12 +190,6 @@ public class Home extends AppCompatActivity implements BottomNavigationView.OnNa
             }
         });
 
-        if (user.getPhotoUrl()==null){
-            Glide.with(this).load(this.getResources().getIdentifier("profile", "drawable", this.getPackageName())).into(profileImage);
-        }else {
-            Glide.with(this).load(user.getPhotoUrl()).into(profileImage);
-            textView.setText(user.getDisplayName());
-        }
 
         profileImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -197,7 +198,6 @@ public class Home extends AppCompatActivity implements BottomNavigationView.OnNa
 
             }
         });
-
         return super.onCreateOptionsMenu(menu);
     }
 

@@ -7,6 +7,14 @@
     android:background="@drawable/main_background"
     tools:context=".ProfileActivity">
 
+    <RelativeLayout
+        android:id="@+id/profile_relative_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible">
+
+
+
     <ImageButton
         android:id="@+id/profile_back"
         android:layout_width="40dp"
@@ -414,5 +422,6 @@
 
 
     </LinearLayout>
+    </RelativeLayout>
 
 </RelativeLayout>

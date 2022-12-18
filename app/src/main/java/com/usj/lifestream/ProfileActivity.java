@@ -16,6 +16,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -55,11 +56,13 @@ public class ProfileActivity extends AppCompatActivity {
     private boolean switchState;
     private Switch simpleSwitch;
     private String selected_province, selected_blood,selectedDate;
+    RelativeLayout relativeLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+        relativeLayout = findViewById(R.id.profile_relative_layout);
 
         progressBar= (ProgressBar)findViewById(R.id.profile_spin_kit);
         Sprite doubleBounce = new Wave();
@@ -170,10 +173,12 @@ public class ProfileActivity extends AppCompatActivity {
                 User userProfile=snapshot.getValue(User.class);
 
                 if (userProfile != null){
-                    if(userProfile.profileURL == null){
-                        Glide.with(ProfileActivity.this).load(someImage).centerCrop().error(someImage).into(profileImage);
-                    }else {
+                    if(userProfile.profileURL != null){
                         Glide.with(ProfileActivity.this).load(userProfile.profileURL).centerCrop().error(someImage).into(profileImage);
+                    }else if(user.getPhotoUrl() != null) {
+                        Glide.with(ProfileActivity.this).load(user.getPhotoUrl()).into(profileImage);
+                    }else{
+                        Glide.with(ProfileActivity.this).load(someImage).centerCrop().error(someImage).into(profileImage);
                     }
                     email.setText(userProfile.email);
                     firstNameEditText.setText(userProfile.firstName);
@@ -203,6 +208,7 @@ public class ProfileActivity extends AppCompatActivity {
                         lastNameEditText.setText(signInAccount.getFamilyName());
                     }
                 }
+                relativeLayout.setVisibility(View.VISIBLE);
             }
 
             @Override
@@ -298,5 +304,11 @@ public class ProfileActivity extends AppCompatActivity {
                         }
                     }
                 });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
     }
 }
