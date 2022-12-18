@@ -219,7 +219,7 @@ public class AccountRegister extends AppCompatActivity implements View.OnClickLi
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
-                    User user1= new User(sFirstName,sLastName,sMobile,sEmail,sLine1,sLine2,sCity,selected_province,null,selectedDate,selected_blood,null,null,switchState);
+                    User user1= new User(sFirstName,sLastName,sMobile,sEmail,sLine1,sLine2,sCity,selected_province,null,selectedDate,selected_blood,null,null,null,switchState);
 
                     FirebaseDatabase.getInstance().getReference("users")
                             .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
