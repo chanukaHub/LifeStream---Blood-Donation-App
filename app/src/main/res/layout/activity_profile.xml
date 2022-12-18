@@ -1,9 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/main_background"
     tools:context=".ProfileActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ImageButton
+        android:id="@+id/profile_back"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="25dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/back_arrow"/>
+
+
+    <RelativeLayout
+        android:id="@+id/profile_image_layout"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_view"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            app:civ_circle_background_color="@color/white"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            app:civ_border_width="2dp"
+            app:civ_border_color="@color/app_red"/>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/add_profile_view"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="80dp"
+            android:layout_marginLeft="80dp"
+            android:layout_alignStart="@+id/profile_view"
+            app:civ_circle_background_color="@color/app_red"
+            android:src="@drawable/add_profile_image" />
+
+
+    </RelativeLayout>
+    <TextView
+        android:id="@+id/profile_email"
+        android:layout_width="250dp"
+        android:layout_marginTop="8dp"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/profile_image_layout"
+        android:fontFamily="@font/roboto_bold"
+        />
+
+    <LinearLayout
+        android:id="@+id/button_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginVertical="20dp"
+        android:weightSum="2">
+
+        <Button
+            android:id="@+id/save_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Save Changes"
+            android:layout_margin="5dp"
+            android:background="@drawable/round_white_btn_style"
+            android:clickable="true"
+            android:focusable="true" />
+        <Button
+            android:id="@+id/sign_out_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Sign Out"
+            android:layout_margin="5dp"
+            android:background="@drawable/round_style"
+            android:clickable="true"
+            android:focusable="true"
+            />
+
+
+    </LinearLayout>
+
+</RelativeLayout>

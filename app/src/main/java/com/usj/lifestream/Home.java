@@ -193,11 +193,7 @@ public class Home extends AppCompatActivity implements BottomNavigationView.OnNa
         profileImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(Home.this,Login.class));
-                finish();
-                //startActivity(new Intent(Home.this,ProfileActivity.class));
+                startActivity(new Intent(Home.this,ProfileActivity.class));
 
             }
         });
