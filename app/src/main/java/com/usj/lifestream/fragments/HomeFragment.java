@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -21,19 +22,33 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.github.ybq.android.spinkit.sprite.Sprite;
 import com.github.ybq.android.spinkit.style.Wave;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.usj.lifestream.BloodRequestActivity;
+import com.usj.lifestream.Home;
+import com.usj.lifestream.Login;
+import com.usj.lifestream.ProfileActivity;
 import com.usj.lifestream.R;
 import com.usj.lifestream.adapters.BloodBankAdapter;
 import com.usj.lifestream.adapters.EventSliderAdapter;
 import com.usj.lifestream.model.BloodBank;
 import com.usj.lifestream.model.Event;
+import com.usj.lifestream.model.User;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -52,7 +67,9 @@ public class HomeFragment extends Fragment {
     boolean isFirstLoad = true;
     private RecyclerView recyclerView;
     RelativeLayout requestBlood_relativeLayout,donateBlood_relativeLayout;
-
+    private FirebaseUser user;
+    private DatabaseReference reference;
+    private String userId;
 
 
     @Override
@@ -66,6 +83,9 @@ public class HomeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        user= FirebaseAuth.getInstance().getCurrentUser();
+        reference= FirebaseDatabase.getInstance().getReference("users");
+        userId= user.getUid();
 
         if (isFirstLoad){
             progressBar = view.findViewById(R.id.spin_kit3);
@@ -184,8 +204,24 @@ public class HomeFragment extends Fragment {
         requestBlood_relativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), BloodRequestActivity.class);
-                startActivity(intent);
+                reference.child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        User userProfile=snapshot.getValue(User.class);
+
+                        if (userProfile != null) {
+                            Intent intent = new Intent(getContext(), BloodRequestActivity.class);
+                            startActivity(intent);
+                        }else {
+                            showErrorDialog();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
             }
         });
     }
@@ -215,5 +251,32 @@ public class HomeFragment extends Fragment {
         } else {
             return false;
         }
+    }
+
+    private void showErrorDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setCancelable(false);
+
+
+        View view = LayoutInflater.from(getContext()).inflate(R.layout.no_user_detail_dialog, getActivity().findViewById(R.id.no_user_details_layout));
+        builder.setView(view);
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+        view.findViewById(R.id.update_details_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(), ProfileActivity.class));
+                alertDialog.cancel();
+            }
+        });
+        view.findViewById(R.id.cancel_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                alertDialog.cancel();
+            }
+        });
+
+
+
     }
 }

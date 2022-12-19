@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.Spinner;
@@ -46,6 +47,7 @@ public class BloodRequestActivity extends AppCompatActivity {
     private DatabaseReference reference;
     private String userId;
     private Button requestButton;
+    private ImageButton imageButton;
 
 
 
@@ -72,6 +74,13 @@ public class BloodRequestActivity extends AppCompatActivity {
         editTextNote = findViewById(R.id.request_blood_note);
         mobileNumberEditText=findViewById(R.id.request_blood_number);
         requestButton = findViewById(R.id.request_blood_btn);
+        imageButton=findViewById(R.id.blood_request_back);
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         requestButton.setOnClickListener(new View.OnClickListener() {
             @Override

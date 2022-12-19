@@ -41,9 +41,10 @@ import org.w3c.dom.Text;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class Home extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener{
-    FirebaseUser user;
-    BottomNavigationView bottomNavigationView;
-    Fragment homeFragment;
+
+    private BottomNavigationView bottomNavigationView;
+    private Fragment homeFragment;
+    private FirebaseUser user;
     private DatabaseReference reference;
     private String userId;
 
@@ -98,9 +99,7 @@ public class Home extends AppCompatActivity implements BottomNavigationView.OnNa
         });
 
         builder.setView(view);
-
         AlertDialog alertDialog = builder.create();
-
         alertDialog.show();
 
     }
