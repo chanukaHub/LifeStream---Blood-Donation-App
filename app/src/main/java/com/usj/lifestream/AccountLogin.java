@@ -56,9 +56,9 @@ public class AccountLogin extends AppCompatActivity implements View.OnClickListe
             case R.id.login_btn:
                 login();
                 break;
-            //case R.id.textView_reset_password:
-                //startActivity(new Intent(MindMelloAccountLogin.this,ForgotPassword.class));
-                //break;
+            case R.id.textView_reset_password:
+                startActivity(new Intent(AccountLogin.this,ForgotPassword.class));
+                break;
         }
 
     }

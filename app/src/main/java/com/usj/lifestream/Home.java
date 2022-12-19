@@ -135,15 +135,15 @@ public class Home extends AppCompatActivity implements BottomNavigationView.OnNa
                 //nav.setCheckedItem(R.id.menu_categories);
                 displayFragment(fragment);
                 break;
-            case R.id.item3:
-                if(!isConnectingToInternet(this))
-                {
-                    showInternetDialog();
-                }
-                fragment = new EventFragment();
+            //case R.id.item3:
+                //if(!isConnectingToInternet(this))
+                //{
+                //    showInternetDialog();
+                //}
+                //fragment = new EventFragment();
                 //nav.setCheckedItem(R.id.menu_favorite);
-                displayFragment(fragment);
-                break;
+                //displayFragment(fragment);
+                //break;
         }
         return true;
     }

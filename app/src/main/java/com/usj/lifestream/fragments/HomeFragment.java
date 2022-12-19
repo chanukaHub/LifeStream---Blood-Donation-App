@@ -8,6 +8,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.CompositePageTransformer;
@@ -161,6 +163,20 @@ public class HomeFragment extends Fragment {
         }
 
         requestBlood_relativeLayout =view.findViewById(R.id.request_blood_relativeLayout_btn);
+        donateBlood_relativeLayout = view.findViewById(R.id.donate_blood_relativeLayout_btn);
+
+        donateBlood_relativeLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SearchFragment searchFragment = new SearchFragment();
+                FragmentManager fragmentManager = getFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.content_area, searchFragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+
+            }
+        });
 
         recyclerView =view.findViewById(R.id.blood_bank_recyclerView);
         recyclerView.setHasFixedSize(true);
