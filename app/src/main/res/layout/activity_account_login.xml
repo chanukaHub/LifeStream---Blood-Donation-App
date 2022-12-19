@@ -140,8 +140,10 @@
         android:background="@drawable/round_style"
         android:fontFamily="@font/roboto"
         android:padding="5dp"
-        android:text="LOGIN"
+        android:text="Login"
         android:textSize="16dp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textAllCaps="false"
+        android:textColor="@color/white"/>
 
 </RelativeLayout>

@@ -206,6 +206,7 @@ public class ProfileActivity extends AppCompatActivity {
                         email.setText(signInAccount.getEmail());
                         firstNameEditText.setText(signInAccount.getGivenName());
                         lastNameEditText.setText(signInAccount.getFamilyName());
+                        updateSwitch(false);
                     }
                 }
                 relativeLayout.setVisibility(View.VISIBLE);

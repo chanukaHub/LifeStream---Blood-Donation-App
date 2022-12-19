@@ -73,11 +73,13 @@
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/round_style"
                 android:text="Login with LifeStream"
-                android:textStyle="bold"
                 android:fontFamily="@font/roboto_bold"
                 android:textAlignment="center"
                 android:drawableLeft="@drawable/lifestream_icon"
-                android:paddingLeft="45dp"
+                android:paddingHorizontal="60dp"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="16sp"
                 />
 
             <Button
@@ -88,12 +90,13 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/round_style"
                 android:text="Sign in with Google"
-                android:textStyle="bold"
                 android:fontFamily="@font/roboto_bold"
                 android:drawableLeft="@drawable/google_icon"
                 android:textAlignment="center"
-                android:paddingLeft="45dp"
-                android:paddingRight="30dp"
+                android:paddingHorizontal="60dp"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="16sp"
                 />
 
 

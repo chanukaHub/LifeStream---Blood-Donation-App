@@ -1,6 +1,7 @@
 package com.usj.lifestream.fragments;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -18,6 +19,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.github.ybq.android.spinkit.sprite.Sprite;
@@ -37,6 +39,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.usj.lifestream.BloodRequest;
 import com.usj.lifestream.R;
 import com.usj.lifestream.adapters.BloodBankAdapter;
 import com.usj.lifestream.adapters.EventSliderAdapter;
@@ -59,6 +62,7 @@ public class HomeFragment extends Fragment {
     private static ArrayList<Event> playerList = new ArrayList<Event>();
     boolean isFirstLoad = true;
     private RecyclerView recyclerView;
+    RelativeLayout requestBlood_relativeLayout,donateBlood_relativeLayout;
 
 
 
@@ -147,6 +151,8 @@ public class HomeFragment extends Fragment {
 
         }
 
+        requestBlood_relativeLayout =view.findViewById(R.id.request_blood_relativeLayout_btn);
+
         recyclerView =view.findViewById(R.id.blood_bank_recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),1));
@@ -183,6 +189,14 @@ public class HomeFragment extends Fragment {
                 super.onPageSelected(position);
                 slideHandler.removeCallbacks(slideRunnable);
                 slideHandler.postDelayed(slideRunnable,4000);
+            }
+        });
+
+        requestBlood_relativeLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), BloodRequest.class);
+                startActivity(intent);
             }
         });
     }
