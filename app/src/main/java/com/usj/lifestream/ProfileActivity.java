@@ -56,7 +56,7 @@ public class ProfileActivity extends AppCompatActivity {
     private boolean switchState;
     private Switch simpleSwitch;
     private String selected_province, selected_blood,selectedDate;
-    RelativeLayout relativeLayout;
+    private RelativeLayout relativeLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
