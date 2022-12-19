@@ -38,7 +38,7 @@ import java.util.Calendar;
 public class BloodRequestActivity extends AppCompatActivity {
 
     private RadioButton radioButtonMyself, radioButtonOther;
-    private EditText editTextPatientName,editTextHospital,editTextTime,editTextNote,selectDateEditText,mobileNumberEditText;
+    private EditText editTextPatientName,editTextHospital,editTextTime,editTextNote,selectDateEditText,mobileNumberEditText,noteEditText;
     private boolean switchState;
     private Switch simpleSwitch;
     private String selected_blood,selectedDate;
@@ -73,6 +73,7 @@ public class BloodRequestActivity extends AppCompatActivity {
         editTextTime = findViewById(R.id.request_blood_time);
         editTextNote = findViewById(R.id.request_blood_note);
         mobileNumberEditText=findViewById(R.id.request_blood_number);
+        noteEditText =findViewById(R.id.request_blood_note);
         requestButton = findViewById(R.id.request_blood_btn);
         imageButton=findViewById(R.id.blood_request_back);
         imageButton.setOnClickListener(new View.OnClickListener() {
@@ -193,13 +194,14 @@ public class BloodRequestActivity extends AppCompatActivity {
     }
 
     private void addRequest() {
-        String patientName,sMobile,sPlace,sTime;
+        String patientName,sMobile,sPlace,sTime,sNote;
         patientName = editTextPatientName.getText().toString().trim();
         sMobile = mobileNumberEditText.getText().toString().trim();
         sPlace = editTextHospital.getText().toString().trim();
         switchState = simpleSwitch.isChecked();
         selectedDate =selectDateEditText.getText().toString().trim();
         sTime= editTextTime.getText().toString().trim();
+        sNote = editTextNote.getText().toString().trim();
 
         if(patientName.isEmpty()){
             editTextPatientName.setError("Name is required");
@@ -232,10 +234,27 @@ public class BloodRequestActivity extends AppCompatActivity {
         }
 
         progressBar.setVisibility(View.VISIBLE);
-        BloodRequest bloodRequest = new BloodRequest(patientName,sMobile,sPlace,selected_blood,selectedDate,sTime,switchState);
+        BloodRequest bloodRequest = new BloodRequest(patientName,sMobile,sPlace,selected_blood,selectedDate,sTime,sNote,switchState);
 
-        FirebaseDatabase.getInstance().getReference("bloodRequest").child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                .push().setValue(bloodRequest).addOnCompleteListener(new OnCompleteListener<Void>() {
+
+
+        FirebaseDatabase.getInstance().getReference("bloodRequest").push().setValue(bloodRequest).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task1) {
+                if (task1.isSuccessful()) {
+                    Toast.makeText(BloodRequestActivity.this, "Request added successfully!", Toast.LENGTH_LONG).show();
+                    progressBar.setVisibility(View.GONE);
+                    startActivity(new Intent(BloodRequestActivity.this, Home.class));
+                    finish();
+                } else {
+                    Toast.makeText(BloodRequestActivity.this, "Fail! Try again!", Toast.LENGTH_LONG).show();
+                    progressBar.setVisibility(View.GONE);
+                }
+            }
+        });
+
+        FirebaseDatabase.getInstance().getReference("bloodRequestHistory").child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+               .push().setValue(bloodRequest).addOnCompleteListener(new OnCompleteListener<Void>(){
                     @Override
                     public void onComplete(@NonNull Task<Void> task1) {
                         if (task1.isSuccessful()) {
@@ -250,4 +269,5 @@ public class BloodRequestActivity extends AppCompatActivity {
                     }
                 });
     }
+
 }

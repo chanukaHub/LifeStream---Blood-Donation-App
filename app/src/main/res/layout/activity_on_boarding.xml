@@ -5,6 +5,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".OnBoardingActivity">
+    <RelativeLayout
+        android:id="@+id/skip_relative_Layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_margin="20dp"
+        >
+        <TextView
+            android:id="@+id/skipTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:text="SKIP"
+            android:layout_marginHorizontal="5dp"
+            android:fontFamily="@font/roboto_bold"
+            android:textSize="20sp"
+            android:textAlignment="center"
+            android:textColor="@color/app_red"
+            />
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="30dp"
+            android:src="@drawable/skip_icon"
+            android:layout_toRightOf="@+id/skipTextView"/>
+    </RelativeLayout>
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewpager"

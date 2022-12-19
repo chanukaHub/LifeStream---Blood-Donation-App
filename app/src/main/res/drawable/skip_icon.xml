@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android" xmlns:aapt="http://schemas.android.com/aapt"
+    android:viewportWidth="512"
+    android:viewportHeight="512"
+    android:width="24dp"
+    android:height="24dp">
+
+    <path
+        android:pathData="M2 2L101.5 2L104 4.5L305 254.5L101.5 510L2.5 510L2 508.5L201 259.5L204 253.5L2 2Z"
+        android:fillColor="@color/app_red"
+        android:strokeColor="#000000"
+        android:strokeWidth="1" />
+    <path
+        android:pathData="M208.5 2L307.5 2L312 6.5L511 254.5L307.5 510L208 509.5L411 254.5L211 6.5L208.5 2Z"
+        android:fillColor="@color/app_red"
+        android:strokeColor="#000000"
+        android:strokeWidth="1" />
+</vector>

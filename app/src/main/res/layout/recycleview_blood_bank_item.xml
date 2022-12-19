@@ -41,7 +41,6 @@
                     android:textSize="12sp"
                     android:layout_below="@+id/name_textView1"
                     android:layout_toRightOf="@+id/imageView1"
-                    android:layout_toLeftOf="@+id/imageView4"
                     android:layout_marginVertical="3dp"
                     android:layout_marginHorizontal="5dp"/>
 
